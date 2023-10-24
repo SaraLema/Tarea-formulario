@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulario de Estudiantes</title>
+  <style>
+    body {
+      background-color: #f0e8d8; /* Cambia este valor al color pastel que prefieras */
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Formulario de Estudiantes</h2>
+  
+  <form id="formulario" action="#" method="post">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required><br><br>
+    
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" required><br><br>
+    
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" name="edad" required><br><br>
+    
+    <label for="genero">Género:</label>
+    <select id="genero" name="genero" required>
+      <option value="">Seleccionar</option>
+      <option value="masculino">Masculino</option>
+      <option value="femenino">Femenino</option>
+      <option value="otro">Otro</option>
+    </select><br><br>
+    
+    <label for="nivel">Nivel de Estudio:</label><br>
+    <input type="radio" id="basico" name="nivel" value="basico">
+    <label for="basico">Básico</label><br>
+    <input type="radio" id="intermedio" name="nivel" value="intermedio">
+    <label for="intermedio">Intermedio</label><br>
+    <input type="radio" id="avanzado" name="nivel" value="avanzado">
+    <label for="avanzado">Avanzado</label><br><br>
+    
+    <input type="submit" value="Enviar">
+  </form>
+  
+  <h2>Datos Ingresados</h2>
+  <table id="tabla">
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Edad</th>
+      <th>Género</th>
+      <th>Nivel de Estudio</th>
+    </tr>
+  </table>
+  
+  <script>
+    document.getElementById("formulario").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var nombre = document.getElementById("nombre").value;
+      var apellido = document.getElementById("apellido").value;
+      var edad = document.getElementById("edad").value;
+      var genero = document.getElementById("genero").value;
+      var nivel = document.querySelector('input[name="nivel"]:checked');
+      
+      var tabla = document.getElementById("tabla");
+      var row = tabla.insertRow(-1);
+      var nombreCell = row.insertCell(0);
+      var apellidoCell = row.insertCell(1);
+      var edadCell = row.insertCell(2);
+      var generoCell = row.insertCell(3);
+      var nivelCell = row.insertCell(4);
+      
+      nombreCell.innerHTML = nombre;
+      apellidoCell.innerHTML = apellido;
+      edadCell.innerHTML = edad;
+      generoCell.innerHTML = genero;
+      nivelCell.innerHTML = nivel.value;
+      
+      document.getElementById("formulario").reset();
+    });
+  </script>
+</body>
+</html>
+
